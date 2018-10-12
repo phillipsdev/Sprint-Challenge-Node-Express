@@ -18,7 +18,7 @@ let prevPrice = null;
 function getURL(url) {
   return new Promise((resolve, reject) => {
     fetch(url)
-      .then(res => res.json())
+      .then(res => res.status(SUCCESS))
       .then(data => resolve(data))
       .catch(err => reject(err));
   });
@@ -33,7 +33,7 @@ app.get("/compare", (req, res) => {
       res.send({
         Today: currentPrice,
         Prior: prevPrice,
-        Difference: difference,
+        Difference: difference
       });
     })
     .catch(err => {
